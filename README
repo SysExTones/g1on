@@ -1,0 +1,30 @@
+
+The sysex_tones project goal is control of amp modelers via text settings files and MIDI SysEx.
+
+	Copyright (c) 2017
+
+	This project is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Affero General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This project is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU Affero General Public License for more details.
+
+Currently, only tested platform is GNU/Linux and the Zoom G1on with BIOS v 1.21.  Recent versions of the Linux kernel should recognize the G1on as a USB MIDI device automatically.  If you use some other operating system, maybe you'll be lucky and this project will work as is.
+
+Currently, the only control available is via command line example apps, written in Python.
+
+If you are not comfortable with Python code, or not comfortable with command lines, you should wait until this project matures.  End user support is not available.
+
+If you install this somewhere and export PYTHONPATH=somewhere you should be able to run the example apps in the apps directory.
+
+Start with the edit.mode.py and listen.py examples.  They will need the name of the system file for reading/writing MIDI for communication with the G1on.  Try something from /dev/midi* or /dev/snd/midi*.  First run edit.mode.py to turn on 'edit mode' on the G1on.  Then run listen.py and edit a patch parameter on the G1on to see what MIDI traffic is generated.
+
+If you are successful monitoring the G1on, try viewing patch settings with the request.patch.py example.  It will need the name of system files for reading and writing MIDI to/from the G1on.  Try something from /dev/midi* and /dev/snd/midi*.
+
+If you are successful viewing patches, try reading and writing patches using the send.patch.py and save.patches.py examples.
+
+If you want to develop apps using this code as a library, comply with the license.  And don't be suprised if the API changes, this is a rough first pass, without access to G1on MIDI SysEx documentation, so changes are likely.
