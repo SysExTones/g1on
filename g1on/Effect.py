@@ -32,7 +32,11 @@ class Effect( object ):
 	def fabricate( self, name, active=True ):
 		self.effect = [0x00 for i in range( 21 )]
 		if name:
-			lookup = dict( (v,k) for k,v in _g1on.ZOOM_G1ON_EFFECTS.iteritems() )
+			lookup = None
+			if 'iteritems' in dir( {} ): # FIX: kludge because Python3 broke Python2
+				lookup = dict( (v,k) for k,v in _g1on.ZOOM_G1ON_EFFECTS.iteritems() )
+			else:
+				lookup = dict( (v,k) for k,v in _g1on.ZOOM_G1ON_EFFECTS.items() )
 			tag = lookup[name]
 			self.effect[0] = tag[0]
 			self.effect[1] = tag[1]
