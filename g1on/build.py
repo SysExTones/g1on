@@ -62,3 +62,11 @@ def build_patch_request( patchnumber ):
 def build_patch_change( patch ):
 	return bytearray( _CONSTANTS.ZOOM_G1ON_CURRENT_PATCH_ID + patch + [0xf7] )
 
+
+def build_tuner_mode_request( mode='on' ):
+	inertrequestneededforsomereason = build_identity_request()
+	retval = inertrequestneededforsomereason + bytearray( _CONSTANTS.ZOOM_G1ON_TUNER_MODE_REQUEST_ON )
+	if mode.lower() == 'off':
+		retval = bytearray( _CONSTANTS.ZOOM_G1ON_TUNER_MODE_REQUEST_OFF ) + inertrequestneededforsomereason
+	return retval
+
